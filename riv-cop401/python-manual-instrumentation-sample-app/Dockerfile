@@ -8,6 +8,6 @@ RUN pip install --upgrade pip
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-ENV OTEL_EXPORTER_OTLP_ENDPOINT="http://10.0.11.135:4317"
+ENV OTEL_EXPORTER_OTLP_ENDPOINT="http://10.0.11.39:4317"
 
 ENTRYPOINT python app.py

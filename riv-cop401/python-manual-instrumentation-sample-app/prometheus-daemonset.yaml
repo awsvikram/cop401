@@ -60,6 +60,11 @@ data:
                   type: probabilistic
                   probabilistic:
                     sampling_percentage: 20
+      filter/creditcard:
+        error_mode: ignore
+        traces:
+          span:
+            - attributes["http.route"] == "/credit-card"
       batch:
         send_batch_size: 10000
         timeout: 10s
@@ -96,7 +101,7 @@ data:
           exporters: [logging, prometheusremotewrite]
         traces/1:
           receivers: [otlp]
-          processors: [groupbytrace, tail_sampling, batch]
+          processors: [filter/creditcard, groupbytrace, tail_sampling, batch]
           exporters: [logging, awsxray]
               
 ---
